@@ -1,6 +1,5 @@
 # Decoding Generalization from Memorization in Deep Neural Networks
-
-- [PAPER LINK](https://arxiv.org/pdf/2501.14687)
+[ARXIV PAPER](https://arxiv.org/pdf/2501.14687)
   
 ## Contents
 
