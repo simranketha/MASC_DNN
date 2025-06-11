@@ -8,14 +8,16 @@ Overparameterized Deep Neural Networks that generalize well have been key to the
 
 ## Overview
 This repository provides python implementation of the algorithms described in the paper.
-We have used tensorflow for MLP models and pytorch for CNN and AlexNet models.
+
 
 ## Sytem requirements
+We have used tensorflow package for MLP models and pytorch package for CNN and AlexNet models.
 
 ## Installation Guide
 
 
 ## Citation
+
 Please cite our paper:
 @article{ketha2025decoding,
   title={Decoding Generalization from Memorization in Deep Neural Networks},
