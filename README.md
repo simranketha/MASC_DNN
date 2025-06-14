@@ -16,6 +16,20 @@ Overparameterized Deep Neural Networks that generalize well have been key to the
 
 # Overview
 This repository provides python implementation of the algorithms described in the paper.
+* Pytorch implementation of CNN and AlexNet models for the following
+* Training models with different corruption degrees
+* Experiments related to MASC implemented on layer wise outputs of the memorized models (i.e., subspaces with corrupted labels and true labels)
+* Experiment where MASC is used on layer wise outputs of the generalized model (i.e., subspaces with corrupted labels)
+* Experiment to retrain the models with relabeling performed.
+
+
+# Repo Contents
+For training CNN models and Alexnet models we have used pytorch library.
+
+- [MASC](./MASC): Minimum Angle Subspace Classifer related code. Code for different models and datasets used in the paper as also available.
+- [pytorch_training](./pytorch_training.py): Code to train models with different corruption degrees (0.0,0.2,0.4,0.6,0.8,1.0)
+- [pytorch_MASC_all](./pytorch_MASC_all.py): Code to run Exp1: , exp2, exp3 on CNN and AlexNet Models.
+- [pytorch_retrain_early](./pytorch_retrain_early.py): Code for retraining models using MASC predictions.
 
 
 # Sytem requirements
