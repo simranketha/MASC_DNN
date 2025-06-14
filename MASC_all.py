@@ -28,6 +28,18 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
+def str2bool(value):
+    if isinstance(value, bool):
+        return value
+    if value.lower() in {'true', 'yes', '1'}:
+        return True
+    elif value.lower() in {'false', 'no', '0'}:
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+
+
 def temp_store(ds,type_network,corrupt,run):
     #path for temprary activation storage
     temp_path = 'Network_data/{ds}_{type_network}_{corrupt}_{run}'
@@ -118,7 +130,7 @@ if __name__ == "__main__":
     model_type = ['CNN','AlexNet']
     datasets = ['CIFAR10','MNIST','FashionMNIST','TinyImageNet','CIFAR100']
     run_values=[1,2,3]
-    bool_values=['True','False']
+    bool_values=['True','False','true','false']
 
 
     parser.add_argument(
@@ -135,18 +147,18 @@ if __name__ == "__main__":
     )
     
     parser.add_argument(
-        "-dropout", type=str, choices=bool_values, help="select dropout flag"
+        "-dropout", type=str, choices=bool_values, default=False, help="A boolean flag of dropout (true/false)"
     )
     
     parser.add_argument(
-        "-exp3", type=str, choices=bool_values, help="select exp3 flag"
+        "-exp3", type=str, choices=bool_values, default=False, help="A boolean flag of exp3 (true/false)"
     )
     
     parser.add_argument(
-        "-exp2", type=str, choices=bool_values, help="select exp2 flag"
+        "-exp2", type=str, choices=bool_values, default=False, help="A boolean flag of exp2 (true/false)"
     )
     parser.add_argument(
-        "-exp1", type=str, choices=bool_values, help="select exp1 flag"
+        "-exp1", type=str, choices=bool_values, default=False, help="A boolean flag of exp1 (true/false)"
     )
 
     args = parser.parse_args()
@@ -155,6 +167,11 @@ if __name__ == "__main__":
     ds = args.dataset
     run=args.run
     dropout=str2bool(args.dropout)
+    exp1=str2bool(args.exp1)
+    exp2=str2bool(args.exp2)
+    exp3=str2bool(args.exp3)
+
+    
     if corrupt not in corrution_prob:
         args.print_help()
     if type_network not in model_type:
@@ -163,14 +180,7 @@ if __name__ == "__main__":
         args.print_help()
     if run not in run_values:
         args.print_help()
-    if dropout not in bool_values:
-        args.print_help()
-    if exp3 not in bool_values:
-        args.print_help()  
-    if exp2 not in bool_values:
-        args.print_help() 
-    if exp1 not in bool_values:
-        args.print_help() 
+
     torch.manual_seed(42)
         
     n=0.99
