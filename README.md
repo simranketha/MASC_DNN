@@ -16,7 +16,8 @@ Overparameterized Deep Neural Networks that generalize well have been key to the
 
 # Overview
 This repository provides python implementation of the algorithms described in the paper.
-* Pytorch implementation of CNN and AlexNet models for the following
+
+Pytorch implementation of CNN and AlexNet models:
 * Training models with different corruption degrees
 * Experiments related to MASC implemented on layer wise outputs of the memorized models (i.e., subspaces with corrupted labels and true labels)
 * Experiment where MASC is used on layer wise outputs of the generalized model (i.e., subspaces with corrupted labels)
