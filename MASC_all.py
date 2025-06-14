@@ -182,7 +182,10 @@ if __name__ == "__main__":
         args.print_help()
 
     torch.manual_seed(42)
-        
+
+    if exp1 and exp3:
+        print("Cant perform both the experiments together")
+        break
     n=0.99
     runs = 4
     #getting the path for the model and path for temp storage
