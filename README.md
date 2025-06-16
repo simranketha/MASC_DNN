@@ -43,7 +43,7 @@ We have used tensorflow package for MLP models and pytorch package for CNN and A
 
  * Clone or download the current version from project page in github or from git command line:
 ```
-git clone https://github.com/sompolinsky-lab/dnn-object-manifolds.git
+git clone [https://github.com/sompolinsky-lab/dnn-object-manifolds.git](https://github.com/simranketha/MASC_DNN.git)
 ```
 
 # Citation
