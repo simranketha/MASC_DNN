@@ -977,28 +977,28 @@ def model_build(type_network,ds=None,dropout):
 
 def path_model(ds,dropout):
     if ds=='MNIST':
-        path ='/mnt/SSD2TB/simran/PCA/MNIST_CNN'
+        path ='models/MNIST_CNN'
         
         if dropout:
-            path='/mnt/SSD2TB/simran/PCA/MNIST_CNN_dropout'
+            path='models/MNIST_CNN_dropout'
             
     if ds=='FashionMNIST':
-        path = '/mnt/8TB/simran/PCA/FashionMNIST' #check this
+        path = 'models/FashionMNIST_CNN' #check this
         if dropout:
-            path='/mnt/8TB/simran/PCA/FashionMNIST_d_0_2'
+            path='models/FashionMNIST_CNN_dropout'
             
     if ds=='CIFAR10':
-        path = '/mnt/8TB/simran/PCA/CIFAR_10_Wodrop'
+        path = 'models/CIFAR10_CNN'
         if dropout:
-            path = '/mnt/8TB/simran/PCA/CIFAR_10_CNN'
+            path = 'models/CIFAR10_CNN_dropout'
     if ds=='CIFAR100':
-        path = '/mnt/8TB/simran/PCA/CIFAR_100' 
+        path = 'models/CIFAR100_AlexNet' 
         
         if dropout:
-            path = '/mnt/SSD2TB/simran/PCA/CIFAR_100_dropout'
+            path = 'models/CIFAR100_AlexNet_dropout'
             
     if ds=='TinyImageNet':
-        path = '/mnt/SSD2TB/simran/PCA/TinyImagenet_Alexnet'
+        path = 'models/TinyImagenet_AlexNet'
 
     os.makedirs(path,exist_ok=True)
     network_path = os.path.join(path,'Network')

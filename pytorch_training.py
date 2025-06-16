@@ -19,6 +19,15 @@ from MASC import cnn_create
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 ############### corrupted data loader and labels
+def str2bool(value):
+    if isinstance(value, bool):
+        return value
+    if value.lower() in {'true', 'yes', '1'}:
+        return True
+    elif value.lower() in {'false', 'no', '0'}:
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 
 
@@ -42,7 +51,8 @@ if __name__ == "__main__":
     model_type = ['CNN','AlexNet']
     datasets = ['CIFAR10','MNIST','FashionMNIST','TinyImageNet','CIFAR100']
     run_values=[1,2,3]
-    drop_out_values=['True','False']
+    bool_values=['True','False','true','false']
+
 
     parser.add_argument(
         "-corr", type=float, required=True, choices=corrution_prob, help="select corruption"
@@ -58,7 +68,7 @@ if __name__ == "__main__":
     )
     
     parser.add_argument(
-        "-dropout", type=str, choices=drop_out_values, help="select dropout flag"
+        "-dropout", type=str, choices=bool_values, default=False, help="select dropout flag"
     )
 
     args = parser.parse_args()

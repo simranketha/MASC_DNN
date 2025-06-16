@@ -37,8 +37,8 @@ def originial_data(type_network,ds):
     
     if type_network=='AlexNet':
         if ds=='TinyImageNet':
-            network_path = 'models/TinyImagenet_Alexnet/Network'
-            retrain_path='models/TinyImagenet_Alexnet/Network'
+            network_path = 'models/TinyImagenet_AlexNet/Network'
+            retrain_path='models/TinyImagenet_AlexNet/Network'
             batch_size=500
             _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
                 batch_size=1,tiny_imagenet=True)
@@ -47,8 +47,8 @@ def originial_data(type_network,ds):
                 corrupt_prob=corrupt, batch_size=1,tiny_imagenet=True)
         
         if ds=='CIFAR100':
-            network_path = 'models/CIFAR100_Alexnet/Network'
-            retrain_path='models/CIFAR100_Alexnet/Network'
+            network_path = 'models/CIFAR100_AlexNet/Network'
+            retrain_path='models/CIFAR100_AlexNet/Network'
 
             batch_size = 128
 
