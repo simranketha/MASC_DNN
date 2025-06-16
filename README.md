@@ -27,17 +27,16 @@ Pytorch implementation of CNN and AlexNet models:
 # Repo Contents
 For training CNN models and Alexnet models we have used pytorch library.
 
-- [MASC](./MASC): Minimum Angle Subspace Classifer related code. Code for different models and datasets used in the paper as also available.
-- [pytorch_training](./pytorch_training.py): Code to train models with different corruption degrees (0.0,0.2,0.4,0.6,0.8,1.0)
-- [pytorch_MASC_all](./pytorch_MASC_all.py): Code to run experiments related to MASC on memorized models with 
- subspaces corresponding to corrupted and true labels. And code related to MASC on generalized models with corrupted subspaces on CNN and AlexNet Models.
-- [pytorch_retrain_early](./pytorch_retrain_early.py): Code for retraining models using MASC predictions.
+- [MASC](./MASC):  Minimum Angle Subspace Classifer code. Pytorch code for different models and datasets used in the paper as also available here.
+- [pytorch_training](./pytorch_training.py): Pytorch code to train CNN model with CIFAR10, FashionMNIST, MNIST datasets and AlexNet model with Tiny ImageNet, CIFAR-100 datasets with different corruption degrees (i.e., 0.0,0.2,0.4,0.6,0.8,1.0).
+- [pytorch_MASC_all](./pytorch_MASC_all.py): Pytorch code to run experiments related to MASC on memorized models with subspaces corresponding to corrupted and true labels. And code related to MASC on generalized models with corrupted subspaces on CNN and AlexNet Models.
+- [pytorch_retrain_early](./pytorch_retrain_early.py): Pytorch code for retraining models using MASC predictions.
 
 
 # Sytem requirements
 We have used tensorflow package for MLP models and pytorch package for CNN and AlexNet models.
 - [req_pytorch](./req_pytorch.txt): Should be used to set up pytorch environment.
-- 
+
 # Installation Guide
 
 
