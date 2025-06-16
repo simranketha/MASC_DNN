@@ -37,9 +37,8 @@ def originial_data(type_network,ds):
     
     if type_network=='AlexNet':
         if ds=='TinyImageNet':
-            network_path = '/mnt/SSD2TB/simran/PCA/TinyImagenet_Alexnet/Network'
-            retrain_path='/mnt/SSD1TB/simran/PCA/retrain_30/TinyImagenet_Alexnet/Network'
-#             retrain_path='/mnt/SSD1TB/simran/PCA/retrain/TinyImagenet_Alexnet/Network'
+            network_path = 'models/TinyImagenet_Alexnet/Network'
+            retrain_path='models/TinyImagenet_Alexnet/Network'
             batch_size=500
             _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
                 batch_size=1,tiny_imagenet=True)
@@ -48,9 +47,8 @@ def originial_data(type_network,ds):
                 corrupt_prob=corrupt, batch_size=1,tiny_imagenet=True)
         
         if ds=='CIFAR100':
-            network_path = '/mnt/8TB/simran/PCA/CIFAR_100/Network'
-#             retrain_path='/mnt/SSD1TB/simran/PCA/retrain/CIFAR_100_Alexnet/Network'
-            retrain_path='/mnt/SSD1TB/simran/PCA/retrain_30/CIFAR_100_Alexnet/Network'
+            network_path = 'models/CIFAR100_Alexnet/Network'
+            retrain_path='models/CIFAR100_Alexnet/Network'
 
             batch_size = 128
 
@@ -64,9 +62,8 @@ def originial_data(type_network,ds):
         
         if ds=='FashionMNIST':
             batch_size = 128
-            network_path = '/mnt/8TB/simran/PCA/FashionMNIST/Network'
-#             retrain_path='/mnt/SSD1TB/simran/PCA/retrain/FashionMNIST/Network'
-            retrain_path='/mnt/SSD1TB/simran/PCA/retrain_30/FashionMNIST/Network'
+            network_path = 'models/FashionMNIST_CNN/Network'
+            retrain_path='models/FashionMNIST_CNN/Network'
             _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
                 batch_size=1,fashion=True)
 
@@ -74,9 +71,8 @@ def originial_data(type_network,ds):
                                         batch_size=1,fashion=True)
         if ds=='MNIST':
             batch_size = 128
-            network_path = '/mnt/SSD2TB/simran/PCA/MNIST_CNN/Network'
-#             retrain_path='/mnt/SSD1TB/simran/PCA/retrain/MNIST/Network'
-            retrain_path='/mnt/SSD1TB/simran/PCA/retrain_30/MNIST/Network'
+            network_path = 'models/MNIST_CNN/Network'
+            retrain_path='models/MNIST_CNN/Network'
             _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
                 batch_size=1,mnist=True)
 
@@ -84,9 +80,8 @@ def originial_data(type_network,ds):
                                         batch_size=1,mnist=True)    
         if ds=='CIFAR10':
             batch_size = 32
-            network_path = '/mnt/8TB/simran/PCA/CIFAR_10_Wodrop/Network'
-#             retrain_path='/mnt/SSD1TB/simran/PCA/retrain/CIFAR_10_Wodrop/Network'
-            retrain_path='/mnt/SSD1TB/simran/PCA/retrain_30/CIFAR_10_Wodrop/Network'
+            network_path = 'models/CIFAR10_CNN/Network'
+            retrain_path='models/CIFAR10_CNN/Network'
             _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
                 batch_size=1,cifar10=True)
 
