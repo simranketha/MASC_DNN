@@ -29,7 +29,8 @@ For training CNN models and Alexnet models we have used pytorch library.
 
 - [MASC](./MASC): Minimum Angle Subspace Classifer related code. Code for different models and datasets used in the paper as also available.
 - [pytorch_training](./pytorch_training.py): Code to train models with different corruption degrees (0.0,0.2,0.4,0.6,0.8,1.0)
-- [pytorch_MASC_all](./pytorch_MASC_all.py): Code to run Exp1: , exp2, exp3 on CNN and AlexNet Models.
+- [pytorch_MASC_all](./pytorch_MASC_all.py): Code to run experiments related to MASC on memorized models with 
+ subspaces corresponding to corrupted and true labels. And code related to MASC on generalized models with corrupted subspaces on CNN and AlexNet Models.
 - [pytorch_retrain_early](./pytorch_retrain_early.py): Code for retraining models using MASC predictions.
 
 
