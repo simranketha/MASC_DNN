@@ -36,9 +36,10 @@ For training CNN models and Alexnet models we have used pytorch library.
 
 # Sytem requirements
 We have used tensorflow package for MLP models and pytorch package for CNN and AlexNet models.
-
-# Installation Guide
 - [req_pytorch](./req_pytorch.txt): Should be used to set up pytorch environment.
+- 
+# Installation Guide
+
 
 # Citation
 
