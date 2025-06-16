@@ -39,6 +39,12 @@ We have used tensorflow package for MLP models and pytorch package for CNN and A
 
 # Installation Guide
 
+## Download MASC_DNN
+
+ * Clone or download the current version from project page in github or from git command line:
+```
+git clone https://github.com/sompolinsky-lab/dnn-object-manifolds.git
+```
 
 # Citation
 
