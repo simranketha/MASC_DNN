@@ -42,7 +42,7 @@ For training CNN models and Alexnet models we have used pytorch library.
 
  * Clone or download the current version from project page in github or from git command line:
 ```
-git clone https://github.com/simranketha/MASC_DNN.git
+git clone git@github.com:simranketha/MASC_DNN.git
 ```
 
  * Install the related packages:
