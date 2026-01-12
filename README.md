@@ -1,6 +1,7 @@
 # Decoding Generalization from Memorization in Deep Neural Networks
-[ARXIV PAPER](https://arxiv.org/pdf/2501.14687)
-  
+Paper - [Decoding Generalization from Memorization in Deep Neural Networks](https://arxiv.org/pdf/2501.14687) (TMLR, 2026)
+[ARXIV Version](https://arxiv.org/pdf/2501.14687)
+
 ## Contents
 
 - [Abstract](#abstract)
@@ -17,6 +18,7 @@ When class labels in the training set are shuffled to varying degrees, it is kno
 
 # Overview
 This repository provides python implementation of the algorithms described in the paper.
+
 
 Pytorch implementation of CNN and AlexNet models:
 * Training models with different corruption degrees
