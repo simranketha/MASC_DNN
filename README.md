@@ -34,7 +34,7 @@ For training CNN models and Alexnet models we have used pytorch library.
 - [pytorch_retrain_early](./pytorch_retrain_early.py): Pytorch code for retraining models using MASC predictions.
 
 
-# Environment setup
+# Environment Setup
 
 - [env_setup](./env_setup.txt): Follow the instruction in this file to set up pytorch environment.
 
