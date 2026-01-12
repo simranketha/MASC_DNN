@@ -5,7 +5,7 @@
 
 - [Abstract](#abstract)
 - [Overview](#overview)
-- [System Requirements](#system-requirements)
+- [Environment Setup](#Environment-Setup)
 - [Installation Guide](#installation-guide)
 - [Citation](#citation)
 - [License](./LICENSE)
@@ -34,9 +34,9 @@ For training CNN models and Alexnet models we have used pytorch library.
 - [pytorch_retrain_early](./pytorch_retrain_early.py): Pytorch code for retraining models using MASC predictions.
 
 
-# Sytem requirements
-We have used tensorflow package for MLP models and pytorch package for CNN and AlexNet models.
-- [req_pytorch](./req_pytorch.txt): Should be used to set up pytorch environment.
+# Environment setup
+
+- [env_setup](./env_setup.txt): Follow the instruction in this file to set up pytorch environment.
 
 # Installation Guide
 
