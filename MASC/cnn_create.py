@@ -358,7 +358,73 @@ def alexnet(pretrained=False, **kwargs):
 
     return model
 
+   
 
+class ResNet18(nn.Module):
+    def __init__(self, num_classes=10):
+        super(ResNet18, self).__init__()
+        self.in_channels = 64
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(64)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        
+        self.layer1 = self._make_layer(BasicBlock, 64, 2, stride=1)
+        self.layer2 = self._make_layer(BasicBlock, 128, 2, stride=2)
+        self.layer3 = self._make_layer(BasicBlock, 256, 2, stride=2)
+        self.layer4 = self._make_layer(BasicBlock, 512, 2, stride=2)
+        
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.fc = nn.Linear(512, num_classes)
+        
+        self.after_layer_0 = None
+        self.after_layer_0_1 = None
+        self.after_layer_1 = None
+        self.after_layer_2 = None
+        self.after_layer_3 = None
+        self.after_layer_4 = None
+        self.before_fc = None
+
+    def _make_layer(self, block, out_channels, num_blocks, stride):
+        strides = [stride] + [1] * (num_blocks - 1)
+        layers = []
+        for stride in strides:
+            layers.append(block(self.in_channels, out_channels, stride))
+            self.in_channels = out_channels
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+        out = self.maxpool(out)
+        self.after_layer_0 = out.clone().detach()
+        out = self.layer1(out)
+        self.after_layer_1 = out.clone().detach()
+        out = self.layer2(out)
+        self.after_layer_2 = out.clone().detach()
+        out = self.layer3(out)
+        self.after_layer_3 = out.clone().detach()
+        out = self.layer4(out)
+        self.after_layer_4 = out.clone().detach()
+        
+        out = self.avgpool(out)
+        out = out.view(out.size(0), -1)
+        self.before_fc = out.clone().detach()
+        out = self.fc(out)
+        return out
+    
+    def get_intermediate_states(self):
+        return [
+            self.after_layer_0,
+            self.after_layer_1,
+            self.after_layer_2,
+            self.after_layer_3,
+            self.after_layer_4,
+            self.before_fc,
+        ]
+
+    
 
 
 
@@ -951,54 +1017,40 @@ def get_cifar_dataloaders_corrupted(corrupt_prob=0, batch_size=50,fashion=False,
 
 #mdoel and dataset (training and layer out)
 
-def model_build(type_network,ds=None,dropout):
+def model_build(type_network,ds=None,dropout=False):
     if dropout:
         dropvalue=0
     else:
         dropvalue=0.2
     if type_network=='CNN':
         if ds=='CIFAR10':
-            dummy_model = cnn_create.NgnCnn(dropout=dropvalue)
+            dummy_model = NgnCnn(dropout=dropvalue)
         else:
-            dummy_model = cnn_create.NgnCnn(channels=1,dropout=dropvalue)
+            dummy_model =NgnCnn(channels=1,dropout=dropvalue)
         optimizer = torch.optim.Adam(model.parameters(),lr=0.0002)
     loss_func = nn.CrossEntropyLoss()
     if type_network=='AlexNet':
         if ds=='TinyImageNet':
-            dummy_model = cnn_create.AlexNet(num_classes=200, tiny_imagenet=True)
+            dummy_model = AlexNet(num_classes=200, tiny_imagenet=True)
             optimizer=optim.Adam(model.parameters(),betas=(0.9, 0.999),lr = 0.0001)
             loss_func=nn.CrossEntropyLoss().to(device)
 
         if ds=='CIFAR100':
-            dummy_model = cnn_create.AlexNet(num_classes=100,dropout=dropout)
+            dummy_model = AlexNet(num_classes=100,dropout=dropout)
             optimizer = torch.optim.Adam(model.parameters(),lr=0.0001)
             loss_func = nn.CrossEntropyLoss()
+    if type_network=='ResNet18':         
+        dummy_model = ResNet18()
+        loss_func = nn.CrossEntropyLoss()
+        optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     return dummy_model,loss_func,optimizer
 
-def path_model(ds,dropout):
-    if ds=='MNIST':
-        path ='models/MNIST_CNN'
-        
-        if dropout:
-            path='models/MNIST_CNN_dropout'
-            
-    if ds=='FashionMNIST':
-        path = 'models/FashionMNIST_CNN' #check this
-        if dropout:
-            path='models/FashionMNIST_CNN_dropout'
-            
-    if ds=='CIFAR10':
-        path = 'models/CIFAR10_CNN'
-        if dropout:
-            path = 'models/CIFAR10_CNN_dropout'
-    if ds=='CIFAR100':
-        path = 'models/CIFAR100_AlexNet' 
-        
-        if dropout:
-            path = 'models/CIFAR100_AlexNet_dropout'
-            
-    if ds=='TinyImageNet':
-        path = 'models/TinyImagenet_AlexNet'
+def path_model(ds,type_network,dropout=False):
+    path =f'models/{ds}_{type_network}'
+
+    if dropout:
+        path=f'models/{ds}_{type_network}_dropout'
+
 
     os.makedirs(path,exist_ok=True)
     network_path = os.path.join(path,'Network')
@@ -1006,6 +1058,7 @@ def path_model(ds,dropout):
     res_path = os.path.join(path,'Accuracy_results')
     
     return path,network_path,res_path
+
 
 def test_loading(ds):
     if ds=='MNIST':
@@ -1127,6 +1180,55 @@ def data_saving_drop(path,loader,dummy_model,name,dev,type_network):
     
     
 def data_saving(path,loader,dummy_model,name,dev,type_network):
+    if type_network=='ResNet18':
+        output0=[]
+        output1=[]
+        output2=[]
+        output3=[]
+        output4=[]
+        output5=[]
+        output6=[]
+        output7=[]
+        output8=[]
+        y_value=[]
+        dummy_model.to(dev)
+#         nodes, _ = get_graph_node_names(dummy_model)
+         #every block has 2 layers [0] ad [1]  has 2 blocks 
+
+        return_nodes = {
+            'maxpool': 'after_layer_0', #<-- after maxpool 
+            'layer1.0.relu':'after_layer_0_1', # <---  block 1st [0] : 1st relu output
+            'layer1.0.relu_1':'after_layer_0_2',         # <--- block [0] output
+            'layer1.1.relu':'after_layer_0_3', # <--- block 1st [1] : 1st relu output
+             'layer1.1.relu_1':'after_layer_1', # <--- layer1: block [1]  output
+             'layer2.1.relu_1':'after_layer_2',# <--- layer2: block [1]  output
+            'layer3.1.relu_1':'after_layer_3',# <--- layer3: block [1]  output
+            'layer4.1.relu_1':'after_layer_4',# <--- layer4: block [1]  output
+            'view':'before_fc'# <--- after avgpool
+        }
+        extractor = create_feature_extractor(dummy_model, return_nodes=return_nodes)
+        
+        for x,y in loader:
+
+            dummy_out_fcs = extractor(x.to(dev))
+            
+            output0.append(dummy_out_fcs['after_layer_0'].view(-1).detach().cpu())
+            output1.append(dummy_out_fcs['after_layer_0_1'].view(-1).detach().cpu())
+            output2.append(dummy_out_fcs['after_layer_0_2'].view(-1).detach().cpu())
+            output3.append(dummy_out_fcs['after_layer_0_3'].view(-1).detach().cpu())
+            output4.append(dummy_out_fcs['after_layer_1'].view(-1).detach().cpu())
+            output5.append(dummy_out_fcs['after_layer_2'].view(-1).detach().cpu())
+            output6.append(dummy_out_fcs['after_layer_3'].view(-1).detach().cpu())
+            output7.append(dummy_out_fcs['after_layer_4'].view(-1).detach().cpu())
+            output8.append(dummy_out_fcs['before_fc'].view(-1).detach().cpu().numpy())
+            y_value.append(y[0])
+
+        data_layer_name=['after_layer_0','after_layer_0_1','after_layer_0_2','after_layer_0_3',
+                         'after_layer_1', 'after_layer_2', 'after_layer_3','after_layer_4', 
+                         'before_fc','y_value_corrupted']
+        #
+        outputs = [output0,output1, output2, output3,output4,output5,
+                   output6,output7,output8, y_value] 
     if type_network=='AlexNet':
         dummy_output =None
 #         output0=[]
@@ -1174,6 +1276,30 @@ def data_saving(path,loader,dummy_model,name,dev,type_network):
                          'output_fc_0_after_noise_relu', 
                          'output_fc_1_after_noise_relu',
                          'output_fc_2_after_noise_relu','y_value_corrupted']
+        outputs = [output0, output1, output2, output3, output4, y_value]
+    if type_network =='MLP':
+        dummy_output =None
+        output0=[]
+        output1=[]
+        output2=[]
+        output3=[]
+        output4=[]
+        y_value=[]
+        dummy_model.to(dev)
+        for x,y in loader:
+            output0.append(x.detach().cpu().numpy().reshape(-1))
+            dummy_output = dummy_model(x.to(dev))
+            res = dummy_model.get_intermediate_states()
+            output1.append(res[2][0].cpu())
+            output2.append(res[3][0].cpu())
+            output3.append(res[4][0].cpu())
+            output4.append(res[5][0].cpu())
+            y_value.append(y[0])
+        data_layer_name=['input_layer','after_relu_fc1',
+                         'after_relu_fc2', 
+                         'after_relu_fc3',
+                         'after_relu_fc4','y_value_corrupted']
+
         outputs = [output0, output1, output2, output3, output4, y_value]
 
     for idx,data in enumerate(data_layer_name):

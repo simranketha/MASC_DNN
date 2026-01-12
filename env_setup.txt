@@ -1,9 +1,0 @@
-conda create --name pytorch_new python==3.8.10
-conda init bash
-source .bashrc
-conda activate pytorch_new 
-pip install scikit-learn tqdm
-pip install pandas
-
-for gpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 
-for cpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu 

@@ -1,0 +1,48 @@
+Instructions to run MASC on different seeds [10,20,30,40,50] and various pca thresolds [0.99,0.75,0.50,0.25,1.0] 
+
+
+Run the below code after models are trained. 
+
+python MASC_code.py -dataset MNIST -model MLP -corr 0.0 -run 1 -n_value 0.99
+python MASC_code.py -dataset MNIST -model MLP -corr 0.2 -run 1 -n_value 0.99 
+python MASC_code.py -dataset MNIST -model MLP -corr 0.4 -run 1 -n_value 0.99 
+python MASC_code.py -dataset MNIST -model MLP -corr 0.6 -run 1 -n_value 0.99 
+python MASC_code.py -dataset MNIST -model MLP -corr 0.8 -run 1 -n_value 0.99
+
+python MASC_code.py -dataset CIFAR10 -model MLP -corr 0.0 -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR10 -model MLP -corr 0.2 -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR10 -model MLP -corr 0.4 -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR10 -model MLP -corr 0.6 -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR10 -model MLP -corr 0.8 -run 1 -n_value 0.99 
+
+python MASC_code.py -dataset FashionMNIST -model CNN -corr 0.0 -run 1 -n_value 0.99 
+python MASC_code.py -dataset FashionMNIST -model CNN -corr 0.2 -run 1 -n_value 0.99 
+python MASC_code.py -dataset FashionMNIST -model CNN -corr 0.4 -run 1 -n_value 0.99 
+python MASC_code.py -dataset FashionMNIST -model CNN -corr 0.6 -run 1 -n_value 0.99 
+python MASC_code.py -dataset FashionMNIST -model CNN -corr 0.8 -run 1 -n_value 0.99 
+
+python MASC_code.py -dataset MNIST -model CNN -corr 0.0 -run 1 -n_value 0.99 
+python MASC_code.py -dataset MNIST -model CNN -corr 0.2 -run 1 -n_value 0.99 
+python MASC_code.py -dataset MNIST -model CNN -corr 0.4 -run 1 -n_value 0.99  
+python MASC_code.py -dataset MNIST -model CNN -corr 0.6 -run 1 -n_value 0.99 
+python MASC_code.py -dataset MNIST -model CNN -corr 0.8 -run 1 -n_value 0.99 
+
+python MASC_code.py -dataset CIFAR10 -model CNN -corr 0.0 -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR10 -model CNN -corr 0.2 -run 1 -n_value 0.99  
+python MASC_code.py -dataset CIFAR10 -model CNN -corr 0.4 -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR10 -model CNN -corr 0.6 -run 1 -n_value 0.99
+python MASC_code.py -dataset CIFAR10 -model CNN -corr 0.8 -run 1 -n_value 0.99
+
+python MASC_code.py -dataset TinyImageNet -model AlexNet -corr 0.0  -run 1 -n_value 0.99 
+python MASC_code.py -dataset TinyImageNet -model AlexNet -corr 0.2  -run 1 -n_value 0.99 
+python MASC_code.py -dataset TinyImageNet -model AlexNet -corr 0.4  -run 1 -n_value 0.99 
+python MASC_code.py -dataset TinyImageNet -model AlexNet -corr 0.6  -run 1 -n_value 0.99 
+python MASC_code.py -dataset TinyImageNet -model AlexNet -corr 0.8  -run 1 -n_value 0.99 
+
+python MASC_code.py -dataset CIFAR100 -model AlexNet -corr 0.0  -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR100 -model AlexNet -corr 0.2  -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR100 -model AlexNet -corr 0.4  -run 1 -n_value 0.99 
+python MASC_code.py -dataset CIFAR100 -model AlexNet -corr 0.6  -run 1 -n_value 0.99
+python MASC_code.py -dataset CIFAR100 -model AlexNet -corr 0.8  -run 1 -n_value 0.99
+
+Change -nvalue 0.99 to other pca thresolsds and run 1 to 2 or 3.

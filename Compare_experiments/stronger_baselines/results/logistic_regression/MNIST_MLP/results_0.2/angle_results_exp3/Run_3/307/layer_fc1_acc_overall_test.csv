@@ -1,0 +1,2 @@
+,acc_overall,training_probe time,inference time,training_probe flops,inference flops
+0,96.01,12.761444807052612,0.07480168342590332,327680,25600000

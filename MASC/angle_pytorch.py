@@ -150,7 +150,15 @@ def acc_class_angle_layer2(y_pred, y, number_class=10):
 #     print(f'total time taken {total} sec inside acc_class_angle_layer2 function')
     return score_f.detach().cpu().tolist()
 
-def layer_names(type_network,dropout=False):
+def layer_names(type_network,ds,dropout=False):
+    if type_network =='ResNet18':
+        if ds=='CIFAR10':
+            data_layer_name=['after_layer_0','after_layer_0_1','after_layer_0_2',
+                             'after_layer_0_3','after_layer_1','after_layer_2',
+                             'after_layer_3','after_layer_4','before_fc',
+                         'y_value_corrupted']#
+            data_output_name=['l0','l0_1','l0_2','l0_3','l1','l2','l3','l4','bf_last']#
+            num_class=10
     if type_network =='AlexNet':
         data_layer_name=['after_flatten','after_relu_fc1','after_relu_fc2',
                      'y_value_corrupted']
@@ -184,10 +192,10 @@ def layer_names(type_network,dropout=False):
         
     return data_layer_name,data_output_name,num_class
 
-def angle_work_corrupt(type_network,temp_path,run,results,n,dropout):
+def angle_work_corrupt(type_network,temp_path,run,results,n,dropout=False):
 #     print('inside angle_work_corrupt')
     t0 = time.time()
-    data_layer_name,data_output_name,num_class=layer_names(type_network,dropout)
+    data_layer_name,data_output_name,num_class=layer_names(type_network,ds)
         
     results_angle1=results['angle_1']
     results_angle2=results['angle_2']
@@ -309,42 +317,29 @@ def angle_work_corrupt(type_network,temp_path,run,results,n,dropout):
 
             #corrupted label
             acc_overall=accuracy_angle_layer(y_pred,cor_targets)
-#             acc_class=acc_class_angle_layer2(y_pred,cor_targets,number_class=num_class)
             filename='acc_overall_train'
             d = {'acc_overall':[acc_overall]}
             df1 = pd.DataFrame(data=d)
             df1.to_csv(f"{path2}/layer_{data_out}_{filename}.csv") 
-#             filename='acc_classwise_train'
-#             d = {'acc_class':acc_class}
-#             df2 = pd.DataFrame(data=d)
-#             df2.to_csv(f"{path2}/layer_{data_out}_{filename}.csv")  
 
             #original labels
             acc_overall=accuracy_angle_layer(y_pred,og_targets)
-#             acc_class=acc_class_angle_layer2(y_pred,og_targets,number_class=num_class)
             filename='acc_overall_train'
             d = {'acc_overall':[acc_overall]}
             df1 = pd.DataFrame(data=d)
             df1.to_csv(f"{path3}/layer_{data_out}_{filename}.csv") 
-#             filename='acc_classwise_train'
-#             d = {'acc_class':acc_class}
-#             df2 = pd.DataFrame(data=d)
-#             df2.to_csv(f"{path3}/layer_{data_out}_{filename}.csv") 
+
 
             #test data
             num_images=layer_output_test.shape[0]
             y_pred=least_class_layer(class_angle_test,num_images,number_class=num_class)
             #true label test data
             acc_overall=accuracy_angle_layer(y_pred,original_test_labels)
-#             acc_class=acc_class_angle_layer2(y_pred,original_test_labels,number_class=num_class)
             filename='acc_overall_test'
             d = {'acc_overall':[acc_overall]}
             df1 = pd.DataFrame(data=d)
             df1.to_csv(f"{path2}/layer_{data_out}_{filename}.csv") 
-#             filename='acc_classwise_test'
-#             d = {'acc_class':acc_class}
-#             df2 = pd.DataFrame(data=d)
-#             df2.to_csv(f"{path2}/layer_{data_out}_{filename}.csv")
+
             
             del layer_output, og_targets,cor_targets,layer_output_test,original_test_labels,obj
             gc.collect()

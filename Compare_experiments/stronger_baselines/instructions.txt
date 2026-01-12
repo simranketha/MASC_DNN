@@ -1,0 +1,187 @@
+# logistic_regression_probing: logistic regression prob per layer over the layers of the network
+
+python logistic_regression_probing.py -dataset MNIST -model MLP -corr 0.0 -run 1
+python logistic_regression_probing.py -dataset MNIST -model MLP -corr 0.2 -run 1
+python logistic_regression_probing.py -dataset MNIST -model MLP -corr 0.4 -run 1
+python logistic_regression_probing.py -dataset MNIST -model MLP -corr 0.6 -run 1
+python logistic_regression_probing.py -dataset MNIST -model MLP -corr 0.8 -run 1
+
+python logistic_regression_probing.py -dataset CIFAR10 -model MLP -corr 0.0 -run 1 
+python logistic_regression_probing.py -dataset CIFAR10 -model MLP -corr 0.2 -run 1 
+python logistic_regression_probing.py -dataset CIFAR10 -model MLP -corr 0.4 -run 1
+python logistic_regression_probing.py -dataset CIFAR10 -model MLP -corr 0.6 -run 1 
+python logistic_regression_probing.py -dataset CIFAR10 -model MLP -corr 0.8 -run 1 
+
+python logistic_regression_probing.py -dataset FashionMNIST -model CNN -corr 0.0 -run 1
+python logistic_regression_probing.py -dataset FashionMNIST -model CNN -corr 0.2 -run 1
+python logistic_regression_probing.py -dataset FashionMNIST -model CNN -corr 0.4 -run 1
+python logistic_regression_probing.py -dataset FashionMNIST -model CNN -corr 0.6 -run 1
+python logistic_regression_probing.py -dataset FashionMNIST -model CNN -corr 0.8 -run 1
+
+python logistic_regression_probing.py -dataset MNIST -model CNN -corr 0.0 -run 1
+python logistic_regression_probing.py -dataset MNIST -model CNN -corr 0.2 -run 1
+python logistic_regression_probing.py -dataset MNIST -model CNN -corr 0.4 -run 1
+python logistic_regression_probing.py -dataset MNIST -model CNN -corr 0.6 -run 1
+python logistic_regression_probing.py -dataset MNIST -model CNN -corr 0.8 -run 1
+
+python logistic_regression_probing.py -dataset CIFAR10 -model CNN -corr 0.0 -run 1
+python logistic_regression_probing.py -dataset CIFAR10 -model CNN -corr 0.2 -run 1
+python logistic_regression_probing.py -dataset CIFAR10 -model CNN -corr 0.4 -run 1
+python logistic_regression_probing.py -dataset CIFAR10 -model CNN -corr 0.6 -run 1
+python logistic_regression_probing.py -dataset CIFAR10 -model CNN -corr 0.8 -run 1
+
+python logistic_regression_probing.py -dataset TinyImageNet -model AlexNet -corr 0.0 -run 1 
+python logistic_regression_probing.py -dataset TinyImageNet -model AlexNet -corr 0.2 -run 1 
+python logistic_regression_probing.py -dataset TinyImageNet -model AlexNet -corr 0.4 -run 1 
+python logistic_regression_probing.py -dataset TinyImageNet -model AlexNet -corr 0.6 -run 1 
+python logistic_regression_probing.py -dataset TinyImageNet -model AlexNet -corr 0.8 -run 1 
+
+python logistic_regression_probing.py -dataset CIFAR100 -model AlexNet -corr 0.0 -run 1
+python logistic_regression_probing.py -dataset CIFAR100 -model AlexNet -corr 0.2 -run 1
+python logistic_regression_probing.py -dataset CIFAR100 -model AlexNet -corr 0.4 -run 1
+python logistic_regression_probing.py -dataset CIFAR100 -model AlexNet -corr 0.6 -run 1
+python logistic_regression_probing.py -dataset CIFAR100 -model AlexNet -corr 0.8 -run 1
+-----------------------------------------------------------
+
+# nearest_class_mean.py: nearest class mean with cosine
+
+python nearest_class_mean.py -dataset MNIST -model MLP -corr 0.0 -run 1
+python nearest_class_mean.py -dataset MNIST -model MLP -corr 0.2 -run 1
+python nearest_class_mean.py -dataset MNIST -model MLP -corr 0.4 -run 1
+python nearest_class_mean.py -dataset MNIST -model MLP -corr 0.6 -run 1
+python nearest_class_mean.py -dataset MNIST -model MLP -corr 0.8 -run 1
+
+python nearest_class_mean.py -dataset CIFAR10 -model MLP -corr 0.0 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model MLP -corr 0.2 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model MLP -corr 0.4 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model MLP -corr 0.6 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model MLP -corr 0.8 -run 1
+
+python nearest_class_mean.py -dataset FashionMNIST -model CNN -corr 0.0 -run 1
+python nearest_class_mean.py -dataset FashionMNIST -model CNN -corr 0.2 -run 1
+python nearest_class_mean.py -dataset FashionMNIST -model CNN -corr 0.4 -run 1
+python nearest_class_mean.py -dataset FashionMNIST -model CNN -corr 0.6 -run 1
+python nearest_class_mean.py -dataset FashionMNIST -model CNN -corr 0.8 -run 1
+
+python nearest_class_mean.py -dataset MNIST -model CNN -corr 0.0 -run 1
+python nearest_class_mean.py -dataset MNIST -model CNN -corr 0.2 -run 1
+python nearest_class_mean.py -dataset MNIST -model CNN -corr 0.4 -run 1
+python nearest_class_mean.py -dataset MNIST -model CNN -corr 0.6 -run 1
+python nearest_class_mean.py -dataset MNIST -model CNN -corr 0.8 -run 1
+
+python nearest_class_mean.py -dataset CIFAR10 -model CNN -corr 0.0 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model CNN -corr 0.2 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model CNN -corr 0.4 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model CNN -corr 0.6 -run 1
+python nearest_class_mean.py -dataset CIFAR10 -model CNN -corr 0.8 -run 1
+
+python nearest_class_mean.py -dataset TinyImageNet -model AlexNet -corr 0.0 -run 1 
+python nearest_class_mean.py -dataset TinyImageNet -model AlexNet -corr 0.2 -run 1 
+python nearest_class_mean.py -dataset TinyImageNet -model AlexNet -corr 0.4 -run 1 
+python nearest_class_mean.py -dataset TinyImageNet -model AlexNet -corr 0.6 -run 1 
+python nearest_class_mean.py -dataset TinyImageNet -model AlexNet -corr 0.8 -run 1 
+
+python nearest_class_mean.py -dataset CIFAR100 -model AlexNet -corr 0.0 -run 1
+python nearest_class_mean.py -dataset CIFAR100 -model AlexNet -corr 0.2 -run 1
+python nearest_class_mean.py -dataset CIFAR100 -model AlexNet -corr 0.4 -run 1
+python nearest_class_mean.py -dataset CIFAR100 -model AlexNet -corr 0.6 -run 1
+python nearest_class_mean.py -dataset CIFAR100 -model AlexNet -corr 0.8 -run 1
+
+------------------------------------------------------------
+LDA_QDA_probe : 
+
+python LDA_QDA_probe.py -dataset MNIST -model MLP -corr 0.0 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model MLP -corr 0.2 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model MLP -corr 0.4 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model MLP -corr 0.6 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model MLP -corr 0.8 -run 1
+
+python LDA_QDA_probe.py -dataset CIFAR10 -model MLP -corr 0.0 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model MLP -corr 0.2 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model MLP -corr 0.4 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model MLP -corr 0.6 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model MLP -corr 0.8 -run 1
+
+python LDA_QDA_probe.py -dataset FashionMNIST -model CNN -corr 0.0 -run 1
+python LDA_QDA_probe.py -dataset FashionMNIST -model CNN -corr 0.2 -run 1
+python LDA_QDA_probe.py -dataset FashionMNIST -model CNN -corr 0.4 -run 1
+python LDA_QDA_probe.py -dataset FashionMNIST -model CNN -corr 0.6 -run 1
+python LDA_QDA_probe.py -dataset FashionMNIST -model CNN -corr 0.8 -run 1
+
+python LDA_QDA_probe.py -dataset MNIST -model CNN -corr 0.0 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model CNN -corr 0.2 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model CNN -corr 0.4 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model CNN -corr 0.6 -run 1
+python LDA_QDA_probe.py -dataset MNIST -model CNN -corr 0.8 -run 1
+
+python LDA_QDA_probe.py -dataset CIFAR10 -model CNN -corr 0.0 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model CNN -corr 0.2 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model CNN -corr 0.4 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model CNN -corr 0.6 -run 1
+python LDA_QDA_probe.py -dataset CIFAR10 -model CNN -corr 0.8 -run 1
+
+python LDA_QDA_probe.py -dataset TinyImageNet -model AlexNet -corr 0.0 -run 1 
+python LDA_QDA_probe.py -dataset TinyImageNet -model AlexNet -corr 0.2 -run 1 
+python LDA_QDA_probe.py -dataset TinyImageNet -model AlexNet -corr 0.4 -run 1 
+python LDA_QDA_probe.py -dataset TinyImageNet -model AlexNet -corr 0.6 -run 1 
+python LDA_QDA_probe.py -dataset TinyImageNet -model AlexNet -corr 0.8 -run 1 
+
+python LDA_QDA_probe.py -dataset CIFAR100 -model AlexNet -corr 0.0 -run 1
+python LDA_QDA_probe.py -dataset CIFAR100 -model AlexNet -corr 0.2 -run 1
+python LDA_QDA_probe.py -dataset CIFAR100 -model AlexNet -corr 0.4 -run 1
+python LDA_QDA_probe.py -dataset CIFAR100 -model AlexNet -corr 0.6 -run 1
+python LDA_QDA_probe.py -dataset CIFAR100 -model AlexNet -corr 0.8 -run 1
+
+
+-------------------------------------------------------
+KNN_probe:
+
+python KNN_probe.py -dataset MNIST -model MLP -corr 0.0 -run 1
+python KNN_probe.py -dataset MNIST -model MLP -corr 0.2 -run 1
+python KNN_probe.py -dataset MNIST -model MLP -corr 0.4 -run 1
+python KNN_probe.py -dataset MNIST -model MLP -corr 0.6 -run 1
+python KNN_probe.py -dataset MNIST -model MLP -corr 0.8 -run 1
+
+python KNN_probe.py -dataset CIFAR10 -model MLP -corr 0.0 -run 1
+python KNN_probe.py -dataset CIFAR10 -model MLP -corr 0.2 -run 1
+python KNN_probe.py -dataset CIFAR10 -model MLP -corr 0.4 -run 1
+python KNN_probe.py -dataset CIFAR10 -model MLP -corr 0.6 -run 1
+python KNN_probe.py -dataset CIFAR10 -model MLP -corr 0.8 -run 1
+
+python KNN_probe.py -dataset FashionMNIST -model CNN -corr 0.0 -run 1
+python KNN_probe.py -dataset FashionMNIST -model CNN -corr 0.2 -run 1
+python KNN_probe.py -dataset FashionMNIST -model CNN -corr 0.4 -run 1
+python KNN_probe.py -dataset FashionMNIST -model CNN -corr 0.6 -run 1
+python KNN_probe.py -dataset FashionMNIST -model CNN -corr 0.8 -run 1
+
+python KNN_probe.py -dataset MNIST -model CNN -corr 0.0 -run 1
+python KNN_probe.py -dataset MNIST -model CNN -corr 0.2 -run 1
+python KNN_probe.py -dataset MNIST -model CNN -corr 0.4 -run 1
+python KNN_probe.py -dataset MNIST -model CNN -corr 0.6 -run 1
+python KNN_probe.py -dataset MNIST -model CNN -corr 0.8 -run 1
+
+python KNN_probe.py -dataset CIFAR10 -model CNN -corr 0.0 -run 1
+python KNN_probe.py -dataset CIFAR10 -model CNN -corr 0.2 -run 1
+python KNN_probe.py -dataset CIFAR10 -model CNN -corr 0.4 -run 1
+python KNN_probe.py -dataset CIFAR10 -model CNN -corr 0.6 -run 1
+python KNN_probe.py -dataset CIFAR10 -model CNN -corr 0.8 -run 1
+
+python KNN_probe.py -dataset TinyImageNet -model AlexNet -corr 0.0 -run 1
+python KNN_probe.py -dataset TinyImageNet -model AlexNet -corr 0.2 -run 1
+python KNN_probe.py -dataset TinyImageNet -model AlexNet -corr 0.4 -run 1
+python KNN_probe.py -dataset TinyImageNet -model AlexNet -corr 0.6 -run 1
+python KNN_probe.py -dataset TinyImageNet -model AlexNet -corr 0.8 -run 1 
+
+python KNN_probe.py -dataset CIFAR100 -model AlexNet -corr 0.0 -run 1
+python KNN_probe.py -dataset CIFAR100 -model AlexNet -corr 0.2 -run 1
+python KNN_probe.py -dataset CIFAR100 -model AlexNet -corr 0.4 -run 1
+python KNN_probe.py -dataset CIFAR100 -model AlexNet -corr 0.6 -run 1
+python KNN_probe.py -dataset CIFAR100 -model AlexNet -corr 0.8 -run 1
+
+-------------------------
+
+
+
+
+
+

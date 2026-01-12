@@ -28,7 +28,6 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 torch.multiprocessing.set_sharing_strategy('file_system')
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-
 def str2bool(value):
     if isinstance(value, bool):
         return value
@@ -125,10 +124,10 @@ def epoch_number(network_path,corrupt,run):
 
 """**layer_output**"""
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Select model_type, datasets, run, dropout, exp  and corruption.")
+    parser = argparse.ArgumentParser(description="Select model_type, datasets, run, exp  and corruption.")
 
     corrution_prob =[0.0,0.2,0.4,0.6,0.8,1.0] 
-    model_type = ['CNN','AlexNet']
+    model_type = ['CNN','AlexNet','ResNet18']
     datasets = ['CIFAR10','MNIST','FashionMNIST','TinyImageNet','CIFAR100']
     run_values=[1,2,3]
     bool_values=['True','False','true','false']
@@ -145,10 +144,6 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-run", type=int, required=True, choices=drop_out_values, help="select run"
-    )
-    
-    parser.add_argument(
-        "-dropout", type=str, choices=bool_values, default=False, help="A boolean flag of dropout (true/false)"
     )
     
     parser.add_argument(
@@ -190,7 +185,7 @@ if __name__ == "__main__":
     n=0.99
     runs = 4
     #getting the path for the model and path for temp storage
-    path,network_path,_=cnn_create.path_model(ds,dropout=dropout)
+    path,network_path,_=cnn_create.path_model(ds,type_network)
     if exp3:
         temp_path,results_corr=temp_store_exp3(ds,type_network,corrupt,run)
         model_corrupt=0.0
@@ -208,19 +203,19 @@ if __name__ == "__main__":
 
     epoch=epoch_number(network_path,corrupt_model,run)
 
-    dummy_model,_,_ = cnn_create.model_build(type_network,ds,dropout=dropout)
+    dummy_model,_,_ = cnn_create.model_build(type_network,ds)
     path_file_load=f'{network_path}/{model_corrupt}/Run_{run}/model_{epoch}.pth'
     dummy_model.load_state_dict(torch.load(path_file_load))
 
 
     cnn_create.loading_saving_activations(temp_path,dummy_model,corrupted_train,
-                               test_loader,og_targets,dev,type_network,dropout=dropout)
+                               test_loader,og_targets,dev,type_network)
     
     if exp1 or exp3:
-        angle.angle_work_corrupt(type_network,temp_path,run,results_corr,n,dropout=dropout)   
+        angle.angle_work_corrupt(type_network,temp_path,run,results_corr,n)   
     
     if exp2:
-        angle.angle_work_original(type_network,temp_path,run,results_org,n,dropout=dropout)   
+        angle.angle_work_original(type_network,temp_path,run,results_org,n)   
    
     print('deleting temp folder')
     for file in os.listdir(temp_path):                 

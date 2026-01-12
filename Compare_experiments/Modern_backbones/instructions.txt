@@ -1,0 +1,42 @@
+
+Instructions for ResNet18 model.
+
+Step 1: Use training_resnet18_cifar10.py to train ResNet18 with CIFAR10 dataset on different corruption degrees and runs for 100% training accuracy.
+
+Example to run the code on 0% corruption degree and 1 run use the below command
+python training_resnet18_cifar10.py -corr 0.0 -run 1 
+
+For other corruption degrees use the below commands :
+python training_resnet18_cifar10.py -corr 0.2 -run 1 
+python training_resnet18_cifar10.py -corr 0.4 -run 1 
+python training_resnet18_cifar10.py -corr 0.6 -run 1 
+python training_resnet18_cifar10.py -corr 0.8 -run 1 
+
+Step 2: Save the layer outputs using Layeroutput.py code
+
+python Layeroutput.py -corr 0.0 -run 1 
+python Layeroutput.py -corr 0.2 -run 1 
+python Layeroutput.py -corr 0.4 -run 1 
+python Layeroutput.py -corr 0.6 -run 1 
+python Layeroutput.py -corr 0.8 -run 1 
+
+Step 3: Run MASC on corrupt and true label subspace on the saved layer outputs using MASC_code.py
+
+python MASC_code.py -corr 0.0 -run 1 
+python MASC_code.py -corr 0.2 -run 1 
+python MASC_code.py -corr 0.4 -run 1 
+python MASC_code.py -corr 0.6 -run 1 
+python MASC_code.py -corr 0.8 -run 1 
+
+
+Step 4: Run MASC on training dataset when the pca's are already saved using MASC_trainingdata.py
+
+python MASC_trainingdata.py -corr 0.0 -run 1 
+python MASC_trainingdata.py -corr 0.2 -run 1 
+python MASC_trainingdata.py -corr 0.4 -run 1 
+python MASC_trainingdata.py -corr 0.6 -run 1 
+python MASC_trainingdata.py -corr 0.8 -run 1 
+
+Step 5: Run step 1:4 with -run 2 and -run 3
+
+
