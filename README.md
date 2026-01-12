@@ -6,7 +6,6 @@ Paper - [Decoding Generalization from Memorization in Deep Neural Networks](http
 
 - [Abstract](#abstract)
 - [Overview](#overview)
-- [Environment Setup](#Environment-Setup)
 - [Installation Guide](#installation-guide)
 - [Citation](#citation)
 - [License](./LICENSE)
@@ -36,18 +35,26 @@ For training CNN models and Alexnet models we have used pytorch library.
 - [pytorch_retrain_early](./pytorch_retrain_early.py): Pytorch code for retraining models using MASC predictions.
 
 
-# Environment Setup
-
-- [env_setup](./env_setup.txt): Follow the instruction in this file to set up pytorch environment.
-
 # Installation Guide
-
-## Download MASC_DNN
 
  * Clone or download the current version from project page in github or from git command line:
 ```
 git clone https://github.com/simranketha/MASC_DNN.git
 ```
+
+ * Install the related packages:
+```
+conda create --name pytorch_new python==3.8.10
+conda init bash
+source .bashrc
+conda activate pytorch_new 
+pip install scikit-learn tqdm
+pip install pandas
+
+for gpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 
+for cpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu 
+```
+
 
 # Citation
 
