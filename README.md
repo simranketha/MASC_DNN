@@ -61,7 +61,6 @@ for cpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 
 
 - Check [instruction.txt](./instruction.txt) to run the experiments.
 
-
 # Citation
 
 Please cite our paper:
