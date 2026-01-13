@@ -1,0 +1,52 @@
+
+Instructions
+
+Step 1: Use pytorch_training.py to train model [CNN,AlexNet,ResNet18,MLP] with dataset [CIFAR10,MNIST,FashionMNIST,TinyImageNet,CIFAR100] on different corruption degrees and runs for 100% training accuracy.
+    
+Example: To train CNN model on MNIST for 1 run, use the below command to run the code on 0% corruption degree 
+python pytorch_training.py -corr 0.0 -run 1 -model CNN -dataset MNIST
+
+For other corruption degrees use the below commands :
+python pytorch_training.py -corr 0.2 -run 1 -model CNN -dataset MNIST
+python pytorch_training.py -corr 0.4 -run 1 -model CNN -dataset MNIST
+python pytorch_training.py -corr 0.6 -run 1 -model CNN -dataset MNIST
+python pytorch_training.py -corr 0.8 -run 1 -model CNN -dataset MNIST
+
+Step 2: To run MASC corresponding to corrupted subspaces
+    
+python pytorch_MASC_all.py -corr 0.0 -run 1 -model CNN -dataset MNIST -exp1 True
+python pytorch_MASC_all.py -corr 0.2 -run 1 -model CNN -dataset MNIST -exp1 True
+python pytorch_MASC_all.py -corr 0.4 -run 1 -model CNN -dataset MNIST -exp1 True
+python pytorch_MASC_all.py -corr 0.6 -run 1 -model CNN -dataset MNIST -exp1 True
+python pytorch_MASC_all.py -corr 0.8 -run 1 -model CNN -dataset MNIST -exp1 True
+
+
+Step 3: To run MASC corresponding to true subspaces
+    
+python pytorch_MASC_all.py -corr 0.0 -run 1 -model CNN -dataset MNIST -exp2 True
+python pytorch_MASC_all.py -corr 0.2 -run 1 -model CNN -dataset MNIST -exp2 True
+python pytorch_MASC_all.py -corr 0.4 -run 1 -model CNN -dataset MNIST -exp2 True
+python pytorch_MASC_all.py -corr 0.6 -run 1 -model CNN -dataset MNIST -exp2 True
+python pytorch_MASC_all.py -corr 0.8 -run 1 -model CNN -dataset MNIST -exp2 True
+
+
+Step 4: To run generalization model with MASC corresponding to corrupted subspaces
+    
+python pytorch_MASC_all.py -corr 0.0 -run 1 -model CNN -dataset MNIST -exp3 True
+python pytorch_MASC_all.py -corr 0.2 -run 1 -model CNN -dataset MNIST -exp3 True
+python pytorch_MASC_all.py -corr 0.4 -run 1 -model CNN -dataset MNIST -exp3 True
+python pytorch_MASC_all.py -corr 0.6 -run 1 -model CNN -dataset MNIST -exp3 True
+python pytorch_MASC_all.py -corr 0.8 -run 1 -model CNN -dataset MNIST -exp3 True
+
+Step 5: To run retraining experiments with early stopping 
+
+python pytorch_retrain_early.py -corr 0.0 -run 1 -model CNN -dataset MNIST 
+python pytorch_retrain_early.py -corr 0.2 -run 1 -model CNN -dataset MNIST 
+python pytorch_retrain_early.py -corr 0.4 -run 1 -model CNN -dataset MNIST 
+python pytorch_retrain_early.py -corr 0.6 -run 1 -model CNN -dataset MNIST 
+python pytorch_retrain_early.py -corr 0.8 -run 1 -model CNN -dataset MNIST 
+
+
+Step 6: Run step 1-5 with -run 2 and -run 3.
+
+
