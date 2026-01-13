@@ -1022,6 +1022,14 @@ def model_build(type_network,ds=None,dropout=False):
         dropvalue=0
     else:
         dropvalue=0.2
+        
+    if type_network=='MLP':
+        if ds=='CIFAR10':
+            dummy_model = mlp(mnist=False)
+        else:
+            dummy_model = mlp(mnist=True) 
+        optimizer = torch.optim.SGD(model.parameters(), lr=1e-3,momentum=0.9)
+        loss_func = nn.CrossEntropyLoss()
     if type_network=='CNN':
         if ds=='CIFAR10':
             dummy_model = NgnCnn(dropout=dropvalue)

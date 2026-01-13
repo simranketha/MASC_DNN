@@ -59,6 +59,8 @@ for gpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 
 for cpu-version: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu 
 ```
 
+- Check [instruction.txt](./instruction.txt) to run the experiments.
+
 
 # Citation
 

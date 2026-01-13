@@ -151,6 +151,12 @@ def acc_class_angle_layer2(y_pred, y, number_class=10):
     return score_f.detach().cpu().tolist()
 
 def layer_names(type_network,ds,dropout=False):
+    if type_network =='MLP':
+        
+        data_layer_name=['input_layer','after_relu_fc1','after_relu_fc2',  'after_relu_fc3','after_relu_fc4','y_value_corrupted'] 
+        
+        data_output_name=['input','fc1','fc2','fc3','fc4']
+        num_class=10
     if type_network =='ResNet18':
         if ds=='CIFAR10':
             data_layer_name=['after_layer_0','after_layer_0_1','after_layer_0_2',

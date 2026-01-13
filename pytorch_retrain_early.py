@@ -20,7 +20,7 @@ import time
 import torch
 import copy
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 torch.multiprocessing.set_sharing_strategy('file_system')
 dev = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 import gc
@@ -87,12 +87,36 @@ def originial_data(type_network,ds):
 
             corrupted_train, _ , _, og_targets, _ = cnn_create.get_cifar_dataloaders_corrupted(corrupt_prob=corrupt, 
                                         batch_size=1,cifar10=True)
-    
+    if type_network =='MLP':
+        if ds=='MNIST':
+            batch_size = 32
+            network_path = 'models/MNIST_MLP/Network'
+            retrain_path='models/MNIST_MLP/Network'
+            _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
+                batch_size=1,mnist=True)
+
+            corrupted_train, _ , _, og_targets, _ = cnn_create.get_cifar_dataloaders_corrupted(corrupt_prob=corrupt, 
+                                        batch_size=1,mnist=True)    
+        if ds=='CIFAR10':
+            batch_size = 32
+            network_path = 'models/CIFAR10_MLP/Network'
+            retrain_path='models/CIFAR10_MLP/Network'
+            _, test_loader , _,_,_= cnn_create.get_cifar_dataloaders_corrupted(
+                batch_size=1,cifar10=True)
+
+            corrupted_train, _ , _, og_targets, _ = cnn_create.get_cifar_dataloaders_corrupted(corrupt_prob=corrupt, 
+                                        batch_size=1,cifar10=True)
     return corrupted_train,test_loader,og_targets,retrain_path,network_path,batch_size
 
 
 
 def model_build(type_network,ds=None):
+    if type_network=='MLP':
+        if ds=='CIFAR10':
+            dummy_model = mlp(mnist=False)
+        else:
+            dummy_model = mlp(mnist=True) 
+    
     if type_network=='CNN':
         if ds=='CIFAR10':
             dummy_model = cnn_create.NgnCnn()
@@ -118,7 +142,11 @@ def model_params(type_network,ds):
     if type_network=='CNN':
         optimizer = torch.optim.Adam(model.parameters(),lr=0.0002)
         loss_func = nn.CrossEntropyLoss()
-    return 
+        
+    if type_network=='MLP':
+        optimizer = torch.optim.SGD(model.parameters(), lr=1e-3,momentum=0.9)
+        loss_func = nn.CrossEntropyLoss()
+    return loss_func,optimizer
 
 def test_split(test_loader):
 
@@ -180,6 +208,9 @@ def model_files(type_network):
      
     if type_network =='CNN':
         data_layer_name=['input','flattern','fc1','fc2','fc3']    
+    
+    if type_network =='MLP':
+        data_layer_name=['input','fc1','fc2','fc3','fc4']    
     
     return data_layer_name
 
@@ -489,7 +520,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select model_type, datasets and corruption.")
 
     corrution_prob =[0.0,0.2,0.4,0.6,0.8,1.0]
-    model_type = ['CNN','AlexNet']
+    model_type = ['CNN','AlexNet','MLP']
     datasets = ['CIFAR10','MNIST','FashionMNIST','TinyImageNet','CIFAR100']
     run_values=[1,2,3]
 

@@ -38,7 +38,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select model_type, datasets,run and corruption.")
 
     corrution_prob =[0.0,0.2,0.4,0.6,0.8,1.0] 
-    model_type = ['CNN','AlexNet','ResNet18']
+    model_type = ['CNN','AlexNet','ResNet18','MLP']
     datasets = ['CIFAR10','MNIST','FashionMNIST','TinyImageNet','CIFAR100']
     run_values=[1,2,3]
 

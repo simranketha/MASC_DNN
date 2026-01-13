@@ -42,7 +42,7 @@ def str2bool(value):
 
 def temp_store(ds,type_network,corrupt,run):
     #path for temprary activation storage
-    temp_path = 'Network_data/{ds}_{type_network}_{corrupt}_{run}'
+    temp_path = f'Network_data/{ds}_{type_network}_{corrupt}_{run}'
     os.makedirs(temp_path,exist_ok=True)
       
     results_folder=f'angle_results/{ds}_{type_network}'
@@ -70,7 +70,7 @@ def temp_store(ds,type_network,corrupt,run):
 
 def temp_store_exp3(ds,type_network,corrupt,run):
     #path for temprary activation storage
-    temp_path = 'Network_data_exp3/{ds}_{type_network}_{corrupt}_{run}'
+    temp_path = f'Network_data_exp3/{ds}_{type_network}_{corrupt}_{run}'
     os.makedirs(temp_path,exist_ok=True)
       
     results_folder=f'angle_results/{ds}_{type_network}'
@@ -122,12 +122,14 @@ def epoch_number(network_path,corrupt,run):
     model_highest = max(model_numbers, key=lambda x: x[1])
     return model_highest[1]
 
+
+
 """**layer_output**"""
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Select model_type, datasets, run, exp  and corruption.")
 
     corrution_prob =[0.0,0.2,0.4,0.6,0.8,1.0] 
-    model_type = ['CNN','AlexNet','ResNet18']
+    model_type = ['CNN','AlexNet','ResNet18','MLP']
     datasets = ['CIFAR10','MNIST','FashionMNIST','TinyImageNet','CIFAR100']
     run_values=[1,2,3]
     bool_values=['True','False','true','false']
